@@ -1,0 +1,14 @@
+# Database Communication Layer
+psycopg2-binary==2.9.9
+
+# Enterprise Data Synthesis Engine
+Faker==25.2.0
+
+# Real-Time Microsoft Fabric Ingestion (Eventstream Interface)
+azure-eventhub==5.12.1
+
+# Tabular File and Dimension Processing
+pandas==2.2.2
+
+# Configuration Security and Secret Management
+python-dotenv==1.0.1

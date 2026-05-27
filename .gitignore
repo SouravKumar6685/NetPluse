@@ -1,0 +1,9 @@
+# Exclude Python byte cache files
+__pycache__/
+*.pyc
+
+# Exclude local environment configurations containing live passwords
+.env
+
+# Exclude generated file assets to prevent polluting git history
+data/static/*.csv
