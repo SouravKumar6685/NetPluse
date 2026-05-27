@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "MLExperiment",
+    "displayName": "NetPulse_Subscriber_Churn_Evaluation"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "401af6e7-7d78-a8df-487c-f7613d540c21"
+  }
+}

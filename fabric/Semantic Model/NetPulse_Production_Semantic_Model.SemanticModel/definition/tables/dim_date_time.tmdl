@@ -1,0 +1,155 @@
+table dim_date_time
+	lineageTag: 95531c35-09e0-4447-b07c-7af6454a4869
+	sourceLineageTag: [dim].[dim_date_time]
+
+	column date_time_key
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1f606275-5db8-439c-9a20-03d6752eb573
+		sourceLineageTag: date_time_key
+		summarizeBy: none
+		sourceColumn: date_time_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ad828404-cbc1-40df-984b-eccbb32aa987
+		sourceLineageTag: calendar_date
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 505ec83b-2f1c-427d-8af9-c4ac1b213068
+		sourceLineageTag: calendar_year
+		summarizeBy: none
+		sourceColumn: calendar_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f18e5a3-b5a0-4a00-be66-076b6d89131f
+		sourceLineageTag: calendar_month_number
+		summarizeBy: none
+		sourceColumn: calendar_month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_day_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 6848fcfa-5df7-456b-888e-028cf7f74396
+		sourceLineageTag: calendar_day_number
+		summarizeBy: none
+		sourceColumn: calendar_day_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_hour_24
+		dataType: int64
+		formatString: 0
+		lineageTag: 23bfa62c-06a3-42a1-a298-d913846c5de3
+		sourceLineageTag: calendar_hour_24
+		summarizeBy: none
+		sourceColumn: calendar_hour_24
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_quarter_number
+		dataType: int64
+		formatString: 0
+		lineageTag: f9973e46-3f48-4d3d-8885-8e9bee141041
+		sourceLineageTag: calendar_quarter_number
+		summarizeBy: none
+		sourceColumn: calendar_quarter_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: f4ff860c-a59c-48f0-b963-3253a46a2eeb
+		sourceLineageTag: month_name
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_short_name
+		dataType: string
+		lineageTag: 31bc70c7-3075-4bda-ba49-b318d9f39e72
+		sourceLineageTag: month_short_name
+		summarizeBy: none
+		sourceColumn: month_short_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_name
+		dataType: string
+		lineageTag: cbaa0113-d1ae-4970-9292-5eda40d5fdf9
+		sourceLineageTag: day_name
+		summarizeBy: none
+		sourceColumn: day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_short_name
+		dataType: string
+		lineageTag: 4a82bfec-5504-441b-b8ee-c33ca4223ecf
+		sourceLineageTag: day_short_name
+		summarizeBy: none
+		sourceColumn: day_short_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month_sort
+		dataType: string
+		lineageTag: 3e028097-9175-40db-8ee9-7d49c38101e3
+		sourceLineageTag: year_month_sort
+		summarizeBy: none
+		sourceColumn: year_month_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_quarter_name
+		dataType: string
+		lineageTag: 21030545-4469-4f2a-a614-1de8e9a37d65
+		sourceLineageTag: calendar_quarter_name
+		summarizeBy: none
+		sourceColumn: calendar_quarter_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: int64
+		formatString: 0
+		lineageTag: eadbb86b-31a2-4d7e-b926-500a4215852a
+		sourceLineageTag: is_weekend
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column gold_processed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 83654189-27b2-43de-8843-a4d339b8133a
+		sourceLineageTag: gold_processed_at
+		summarizeBy: none
+		sourceColumn: gold_processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date_time = entity
+		mode: directLake
+		source
+			entityName: dim_date_time
+			schemaName: dim
+			expressionSource: 'DirectLake - lh_netpulse_gold'
+

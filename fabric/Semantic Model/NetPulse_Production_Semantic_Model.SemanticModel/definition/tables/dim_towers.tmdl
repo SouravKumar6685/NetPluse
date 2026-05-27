@@ -1,0 +1,97 @@
+table dim_towers
+	lineageTag: 39723e34-e4f9-4979-9746-9872820af4f0
+	sourceLineageTag: [dim].[dim_towers]
+
+	column tower_id
+		dataType: string
+		lineageTag: 3a4bf524-76e7-4bad-acf4-14f6be6a2b20
+		sourceLineageTag: tower_id
+		summarizeBy: none
+		sourceColumn: tower_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector_id
+		dataType: string
+		lineageTag: a56e71e8-720d-45ab-a130-580c9e3df53f
+		sourceLineageTag: sector_id
+		summarizeBy: none
+		sourceColumn: sector_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column telecom_circle
+		dataType: string
+		lineageTag: 6ca194e5-b607-4890-81ed-beec1eadd57a
+		sourceLineageTag: telecom_circle
+		summarizeBy: none
+		sourceColumn: telecom_circle
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		lineageTag: 2b71572f-e12b-4bb9-955b-b9aa3da6138d
+		sourceLineageTag: latitude
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		lineageTag: 7b9f6756-af38-4d2d-bbde-a39efa4cd818
+		sourceLineageTag: longitude
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column equipment_vendor
+		dataType: string
+		lineageTag: 2c8fcbec-38cf-4704-9988-d7ea5eabd8f3
+		sourceLineageTag: equipment_vendor
+		summarizeBy: none
+		sourceColumn: equipment_vendor
+
+		annotation SummarizationSetBy = Automatic
+
+	column hardware_generation
+		dataType: string
+		lineageTag: 6ed3a547-cbaa-4e3e-a300-be8e02b467a9
+		sourceLineageTag: hardware_generation
+		summarizeBy: none
+		sourceColumn: hardware_generation
+
+		annotation SummarizationSetBy = Automatic
+
+	column gold_processed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a6e893e6-6802-42d2-992c-3372e3ae7b99
+		sourceLineageTag: gold_processed_at
+		summarizeBy: none
+		sourceColumn: gold_processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column tower_sector_key
+		dataType: string
+		lineageTag: 9e13fb22-fc39-42f7-8baa-bd81fec94af8
+		sourceLineageTag: tower_sector_key
+		summarizeBy: none
+		sourceColumn: tower_sector_key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_towers = entity
+		mode: directLake
+		source
+			entityName: dim_towers
+			schemaName: dim
+			expressionSource: 'DirectLake - lh_netpulse_gold'
+

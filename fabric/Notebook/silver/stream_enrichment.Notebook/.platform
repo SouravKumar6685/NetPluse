@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "stream_enrichment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4712ebb6-d257-938a-4025-39fdf440bcc2"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "id": "382d2390-cc09-4c81-8035-86c516182e22",
+      "name": "CustomEndpoint-Source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "888852e1-4d58-4439-9bb9-abf6fda30b80",
+      "name": "telemetry",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "9c45203c-c403-b58f-418f-8f0dc9aee28c",
+        "schema": "event",
+        "deltaTable": "telemetry",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "es_netpulse_telemetry-stream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "es_netpulse_telemetry-stream",
+          "schema": {
+            "columns": []
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "2f5097dc-ba6f-4080-86a7-a2e370b504b1",
+      "name": "es_netpulse_telemetry-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "CustomEndpoint-Source"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.1"
+}

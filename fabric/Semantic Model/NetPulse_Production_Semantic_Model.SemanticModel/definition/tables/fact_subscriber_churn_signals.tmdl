@@ -1,0 +1,152 @@
+table fact_subscriber_churn_signals
+	lineageTag: 33cc4916-92a1-46a7-b867-2195a82ef2ce
+	sourceLineageTag: [fact].[fact_subscriber_churn_signals]
+
+	column subscriber_id
+		dataType: string
+		lineageTag: bacbd381-e08e-46a1-a362-12d77c13a606
+		sourceLineageTag: subscriber_id
+		summarizeBy: none
+		sourceColumn: subscriber_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_id
+		dataType: string
+		lineageTag: 085821f2-99fd-4a2a-903a-9f2569d07eca
+		sourceLineageTag: account_id
+		summarizeBy: none
+		sourceColumn: account_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_balance_rupees
+		dataType: double
+		lineageTag: 219942af-7389-4315-b17e-df648273ea99
+		sourceLineageTag: account_balance_rupees
+		summarizeBy: sum
+		sourceColumn: account_balance_rupees
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_payment_attempts
+		dataType: int64
+		formatString: 0
+		lineageTag: d0479055-8d92-491c-8c10-662885f40311
+		sourceLineageTag: total_payment_attempts
+		summarizeBy: sum
+		sourceColumn: total_payment_attempts
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_amount_paid_rupees
+		dataType: double
+		lineageTag: a62a4fc1-782c-4cb9-a125-828d338b7722
+		sourceLineageTag: total_amount_paid_rupees
+		summarizeBy: sum
+		sourceColumn: total_amount_paid_rupees
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_voice_calls
+		dataType: int64
+		formatString: 0
+		lineageTag: 07e59a46-807e-4b64-a27e-e665e0ba85d3
+		sourceLineageTag: total_voice_calls
+		summarizeBy: sum
+		sourceColumn: total_voice_calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropped_voice_calls
+		dataType: int64
+		formatString: 0
+		lineageTag: 5fc2e4cc-1b68-4ee4-a8cc-ae157534b48d
+		sourceLineageTag: dropped_voice_calls
+		summarizeBy: sum
+		sourceColumn: dropped_voice_calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column call_drop_rate_percent
+		dataType: double
+		lineageTag: b26d5f4e-3450-4f8c-94d5-f06dfb1ab562
+		sourceLineageTag: call_drop_rate_percent
+		summarizeBy: sum
+		sourceColumn: call_drop_rate_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_data_sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: 72de06cd-d56f-4a3c-82a2-9f3690cd6ecd
+		sourceLineageTag: total_data_sessions
+		summarizeBy: sum
+		sourceColumn: total_data_sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_data_bytes
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c87edc6-044f-4fe0-8082-39c4c93744aa
+		sourceLineageTag: total_data_bytes
+		summarizeBy: sum
+		sourceColumn: total_data_bytes
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_financial_deficit
+		dataType: int64
+		formatString: 0
+		lineageTag: 40c5feae-76c8-4774-a648-82a935be63a1
+		sourceLineageTag: flag_financial_deficit
+		summarizeBy: sum
+		sourceColumn: flag_financial_deficit
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_severe_call_drops
+		dataType: int64
+		formatString: 0
+		lineageTag: 131cb874-af87-46f3-94f4-b61202549da2
+		sourceLineageTag: flag_severe_call_drops
+		summarizeBy: sum
+		sourceColumn: flag_severe_call_drops
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_zero_utilization
+		dataType: int64
+		formatString: 0
+		lineageTag: 2de51f6d-9a88-4a57-833e-3fbb911b9cfc
+		sourceLineageTag: flag_zero_utilization
+		summarizeBy: sum
+		sourceColumn: flag_zero_utilization
+
+		annotation SummarizationSetBy = Automatic
+
+	column gold_processed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7bd313c9-5f60-4434-99b6-be6cdbb697ed
+		sourceLineageTag: gold_processed_at
+		summarizeBy: none
+		sourceColumn: gold_processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_subscriber_churn_signals = entity
+		mode: directLake
+		source
+			entityName: fact_subscriber_churn_signals
+			schemaName: fact
+			expressionSource: 'DirectLake - lh_netpulse_gold'
+

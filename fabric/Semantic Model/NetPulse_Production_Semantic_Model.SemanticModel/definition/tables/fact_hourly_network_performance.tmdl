@@ -1,0 +1,171 @@
+table fact_hourly_network_performance
+	lineageTag: 516e0282-f258-4af6-b6a7-2ea26c7c5587
+	sourceLineageTag: [fact].[fact_hourly_network_performance]
+
+	column hour
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7b82321b-f0e6-49a9-bb38-403bd1d77c98
+		sourceLineageTag: hour
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column tower_id
+		dataType: string
+		lineageTag: c9444d83-6ee2-41fa-b0f1-55d33495684c
+		sourceLineageTag: tower_id
+		summarizeBy: none
+		sourceColumn: tower_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector_id
+		dataType: string
+		lineageTag: d1574386-6980-463a-b4cf-dbf3522d9794
+		sourceLineageTag: sector_id
+		summarizeBy: none
+		sourceColumn: sector_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column telecom_circle
+		dataType: string
+		lineageTag: 5435a0d9-6bb4-426b-9338-312bd03dcc15
+		sourceLineageTag: telecom_circle
+		summarizeBy: none
+		sourceColumn: telecom_circle
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_voice_calls
+		dataType: int64
+		formatString: 0
+		lineageTag: 16cf7e9c-7394-47a0-9d1c-9cfe0dc7d2cf
+		sourceLineageTag: total_voice_calls
+		summarizeBy: sum
+		sourceColumn: total_voice_calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column dropped_voice_calls
+		dataType: int64
+		formatString: 0
+		lineageTag: 4efb18a7-9105-48c8-8fa4-ce350cba7937
+		sourceLineageTag: dropped_voice_calls
+		summarizeBy: sum
+		sourceColumn: dropped_voice_calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_data_sessions
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a6f4428-03f7-4a17-bdac-a2dfcd5f5746
+		sourceLineageTag: total_data_sessions
+		summarizeBy: sum
+		sourceColumn: total_data_sessions
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_data_volume_bytes
+		dataType: int64
+		formatString: 0
+		lineageTag: b6be140d-efca-4294-945b-018e3e1df9c0
+		sourceLineageTag: total_data_volume_bytes
+		summarizeBy: sum
+		sourceColumn: total_data_volume_bytes
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_voice_duration_seconds
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a0cca1f-6524-4ff9-a0a4-074e378b4353
+		sourceLineageTag: total_voice_duration_seconds
+		summarizeBy: sum
+		sourceColumn: total_voice_duration_seconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_cpu_utilization_percent
+		dataType: double
+		lineageTag: 14689be7-6243-4400-8fad-ae066ee2914b
+		sourceLineageTag: avg_cpu_utilization_percent
+		summarizeBy: sum
+		sourceColumn: avg_cpu_utilization_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column peak_active_connections_count
+		dataType: int64
+		formatString: 0
+		lineageTag: e1efc389-6e25-43da-8ddc-c7a9cfe05aab
+		sourceLineageTag: peak_active_connections_count
+		summarizeBy: sum
+		sourceColumn: peak_active_connections_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_rsrp_signal_strength_dbm
+		dataType: double
+		lineageTag: 1d375ac2-09d4-46d8-9c3f-104a8cd7305a
+		sourceLineageTag: avg_rsrp_signal_strength_dbm
+		summarizeBy: sum
+		sourceColumn: avg_rsrp_signal_strength_dbm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_packet_drop_rate_percent
+		dataType: double
+		lineageTag: 0faafa32-fe6f-4f67-b4c2-f7532873378e
+		sourceLineageTag: avg_packet_drop_rate_percent
+		summarizeBy: sum
+		sourceColumn: avg_packet_drop_rate_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column voice_call_drop_rate_percent
+		dataType: double
+		lineageTag: 49dfbcd8-8202-421a-942d-1bd961c0cace
+		sourceLineageTag: voice_call_drop_rate_percent
+		summarizeBy: sum
+		sourceColumn: voice_call_drop_rate_percent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gold_processed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1e495e73-eac3-4d09-9d0d-005e82352368
+		sourceLineageTag: gold_processed_at
+		summarizeBy: none
+		sourceColumn: gold_processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column tower_sector_key
+		dataType: string
+		lineageTag: 4c2deaae-f886-42b0-ba84-4983a5bd63c6
+		sourceLineageTag: tower_sector_key
+		summarizeBy: none
+		sourceColumn: tower_sector_key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_hourly_network_performance = entity
+		mode: directLake
+		source
+			entityName: fact_hourly_network_performance
+			schemaName: fact
+			expressionSource: 'DirectLake - lh_netpulse_gold'
+

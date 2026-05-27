@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "fact_hourly_network_performance"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d06fb1f4-6847-a3b4-4ac8-a3dda3bf88ad"
+  }
+}

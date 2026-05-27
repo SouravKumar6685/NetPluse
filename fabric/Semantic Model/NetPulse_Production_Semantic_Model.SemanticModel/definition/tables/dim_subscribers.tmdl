@@ -1,0 +1,84 @@
+table dim_subscribers
+	lineageTag: aa22fc07-f150-40c7-8810-4a98e8b20467
+	sourceLineageTag: [dim].[dim_subscribers]
+
+	column subscriber_id
+		dataType: string
+		lineageTag: 6aef47a0-7f4d-47d2-bf8f-263672e97a32
+		sourceLineageTag: subscriber_id
+		summarizeBy: none
+		sourceColumn: subscriber_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_id
+		dataType: string
+		lineageTag: ff031835-e42e-43e6-9e3b-0b99674dc9ed
+		sourceLineageTag: account_id
+		summarizeBy: none
+		sourceColumn: account_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_name
+		dataType: string
+		lineageTag: ff7aa4b8-02f0-4778-ada2-9ec98ce8a188
+		sourceLineageTag: full_name
+		summarizeBy: none
+		sourceColumn: full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column masked_phone_number
+		dataType: string
+		lineageTag: 09bed0d8-3232-4717-b6d5-cd73459a785c
+		sourceLineageTag: masked_phone_number
+		summarizeBy: none
+		sourceColumn: masked_phone_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column masked_email
+		dataType: string
+		lineageTag: 68d8285f-a2fe-4f7c-9947-ea439fdcb8ca
+		sourceLineageTag: masked_email
+		summarizeBy: none
+		sourceColumn: masked_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column telecom_circle
+		dataType: string
+		lineageTag: 7bf94cee-2c06-4b22-98f1-4820b7c262d0
+		sourceLineageTag: telecom_circle
+		summarizeBy: none
+		sourceColumn: telecom_circle
+
+		annotation SummarizationSetBy = Automatic
+
+	column profile_tier
+		dataType: string
+		lineageTag: 3b858840-e5ea-4c0d-ab9c-0f26607ad96d
+		sourceLineageTag: profile_tier
+		summarizeBy: none
+		sourceColumn: profile_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column gold_processed_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 70f55f9f-5d2e-4ab0-8a68-937ebd920a15
+		sourceLineageTag: gold_processed_at
+		summarizeBy: none
+		sourceColumn: gold_processed_at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_subscribers = entity
+		mode: directLake
+		source
+			entityName: dim_subscribers
+			schemaName: dim
+			expressionSource: 'DirectLake - lh_netpulse_gold'
+

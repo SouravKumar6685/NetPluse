@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "DataMaskNotebook"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0e165248-f805-8374-45d6-1314f21f8fc5"
+  }
+}

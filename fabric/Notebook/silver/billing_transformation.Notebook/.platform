@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "billing_transformation"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "babed5c4-2750-a9bb-400d-2214bbbb92c5"
+  }
+}

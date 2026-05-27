@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "id": "9c1ee68d-1c5d-4f95-bfa8-1c1ef16853d2",
+      "name": "CustomEndpoint-Source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "3a0d2e2b-237c-4eaf-a1f7-1fdb4a05ae77",
+      "name": "CDR",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "9c45203c-c403-b58f-418f-8f0dc9aee28c",
+        "schema": "event",
+        "deltaTable": "cdr",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "es_netpulse_cdr-stream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "es_netpulse_cdr-stream",
+          "schema": {
+            "columns": []
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "91c076c0-a916-49e8-b1fa-6d65d3f8930c",
+      "name": "es_netpulse_cdr-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "CustomEndpoint-Source"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.1"
+}

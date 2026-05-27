@@ -1,0 +1,12 @@
+relationship 1d9ab4a0-a52a-3a4f-a85a-b2ceffdeedd7
+	fromColumn: fact_hourly_network_performance.hour
+	toColumn: dim_date_time.date_time_key
+
+relationship c6bcfc68-6697-b4cd-5666-05142432c6b1
+	fromColumn: fact_subscriber_churn_signals.subscriber_id
+	toColumn: dim_subscribers.subscriber_id
+
+relationship f4f38aa0-efe3-0743-1501-cc33775b1fde
+	fromColumn: fact_hourly_network_performance.tower_sector_key
+	toColumn: dim_towers.tower_sector_key
+

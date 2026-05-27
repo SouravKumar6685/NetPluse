@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "NetPulse_Production_Semantic_Model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b6c18be5-2c87-9615-42a9-6fa0bab66b9e"
+  }
+}

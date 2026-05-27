@@ -1,0 +1,164 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "PostgreSqlSource",
+            "query": "SELECT source_schema, source_table, watermark_column, TO_CHAR(last_value, 'YYYY-MM-DD HH24:MI:SS.MS') as last_value FROM control.watermark;",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "PostgreSqlTable",
+            "schema": [],
+            "externalReferences": {
+              "connection": "82898a75-2641-4a30-a705-61e2899bc879"
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "lkp_get_watermark_metadata",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('lkp_get_watermark_metadata').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "PostgreSqlSource",
+                  "query": {
+                    "value": "@concat('SELECT * FROM ', item().source_schema, '.', item().source_table, ' WHERE ', item().watermark_column, ' > ''', item().last_value, '''')",
+                    "type": "Expression"
+                  },
+                  "queryTimeout": "02:00:00",
+                  "datasetSettings": {
+                    "type": "PostgreSqlTable",
+                    "schema": [],
+                    "externalReferences": {
+                      "connection": "82898a75-2641-4a30-a705-61e2899bc879"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "Append",
+                  "applyVOrder": false,
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "schema": {
+                        "value": "@item().source_schema",
+                        "type": "Expression"
+                      },
+                      "table": {
+                        "value": "@item().source_table",
+                        "type": "Expression"
+                      }
+                    },
+                    "schema": [],
+                    "connectionSettings": {
+                      "name": "lh_netpulse_bronze",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "9c45203c-c403-b58f-418f-8f0dc9aee28c",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "externalReferences": {
+                          "connection": "9770afc9-8958-4470-8c9c-b836feb1da09"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "df_copy_postgres_to_fabric",
+              "dependsOn": []
+            },
+            {
+              "type": "Lookup",
+              "typeProperties": {
+                "source": {
+                  "type": "PostgreSqlSource",
+                  "query": "@concat('UPDATE control.watermark SET last_value = NOW() WHERE source_schema = ''', item().source_schema, ''' AND source_table = ''', item().source_table, ''' RETURNING 1 AS success_status;')",
+                  "queryTimeout": "02:00:00"
+                },
+                "datasetSettings": {
+                  "type": "PostgreSqlTable",
+                  "schema": [],
+                  "externalReferences": {
+                    "connection": "82898a75-2641-4a30-a705-61e2899bc879"
+                  },
+                  "annotations": []
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "lkp_update_watermark",
+              "dependsOn": [
+                {
+                  "activity": "df_copy_postgres_to_fabric",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "fe_iterate_tables",
+        "dependsOn": [
+          {
+            "activity": "lkp_get_watermark_metadata",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
