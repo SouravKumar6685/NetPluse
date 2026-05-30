@@ -6,6 +6,8 @@ Project NetPulse is an end-to-end Microsoft Fabric data engineering project that
 
 - Active branch: `develop`
 
+![Develop Branch](ScreenShots/branch.png)
+
 ## Architecture
 
 ![Architecture Diagram](ScreenShots/ArchiectureDiagram.png)
@@ -218,6 +220,13 @@ The Fabric implementation follows this logical flow:
 ### Azure Repo Integration
 
 ![Azure Repo](ScreenShots/10.AzureRepo.png)
+
+### Data Validation Outputs
+
+![PostgreSQL Output](ScreenShots/Postgres_Output.png)
+
+![Fabric Output](ScreenShots/FabricOutput.png)
+
 
 ## Notes
 
